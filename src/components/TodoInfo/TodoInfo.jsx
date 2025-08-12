@@ -1,19 +1,17 @@
+import { UserInfo } from "../UserInfo/UserInfo";
 
 // Add the required props
 export const TodoInfo = ({ todo }) => {
   return (
     <article
-      className=
-        {todo.completed
+      className={
+        todo.completed
           ? 'TodoInfo TodoInfo--completed'
-          : 'TodoInfo TodoInfo--active'}>
+          : 'TodoInfo TodoInfo--active'
+      }
+    >
       <h2 className="TodoInfo__title">{todo.title}</h2>
-      <a
-        className="UserInfo"
-        href={todo.user.email ? `mailto:${todo.user.email}` : '#'}
-      >
-        {todo.user.name}
-      </a>
+      {todo.user && <UserInfo user={todo.user} />}
     </article>
   );
 };
